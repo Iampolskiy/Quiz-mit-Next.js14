@@ -32,7 +32,7 @@ export default function ShowQuestion({
 				questions[correctAnswersInRow].question
 			);
 			const correctAnswer = decodeHtmlEntities(
-				questions[correctAnswersInRow].correct_answer + '!!!!'
+				questions[correctAnswersInRow].correct_answer /* + '!!!!' */
 			);
 			const newAnswersArray = [...incorrectAnswers, correctAnswer].sort(
 				() => Math.random() - 0.5
