@@ -32,7 +32,7 @@ export default function ShowQuestion({
 				questions[correctAnswersInRow].question
 			);
 			const correctAnswer = decodeHtmlEntities(
-				questions[correctAnswersInRow].correct_answer /* + '!!!!' */
+				questions[correctAnswersInRow].correct_answer + '!!!!'
 			);
 			const newAnswersArray = [...incorrectAnswers, correctAnswer].sort(
 				() => Math.random() - 0.5
@@ -41,7 +41,8 @@ export default function ShowQuestion({
 			setAnswersArray(newAnswersArray);
 			setQuestion(question);
 		}
-	}, [questions, correctAnswersInRow, nrOfQuestions]);
+		/* sdf */
+	}, [questions, nrOfQuestions, correctAnswersInRow]);
 
 	function checkAnswer(e: React.MouseEvent<HTMLButtonElement>) {
 		const buttonText = e.currentTarget.textContent;
@@ -61,9 +62,8 @@ export default function ShowQuestion({
 			e.currentTarget.disabled = true;
 			e.currentTarget.style.backgroundColor = 'red';
 			setAnswerStatus('incorrectAnswer');
-			setTimeout(() => {
-				setIncorrectAnswers(incorrectAnswers + 1);
-			}, 2000);
+			setIncorrectAnswers(incorrectAnswers + 1);
+			/* setTimeout(() => {}, 2000); */
 		}
 
 		const rightAnswers = correctAnswersInRow + 1;
