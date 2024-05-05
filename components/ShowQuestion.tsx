@@ -112,7 +112,9 @@ export default function ShowQuestion({
 						<div className="emojiHand"> 👍 {correctAnswersInRow}</div>
 						<div className="emojiHand"> 👎 {incorrectAnswers}</div>
 						<div>score {correctAnswersInRow - incorrectAnswers}</div>
-						<div>questions {questions.length - correctAnswersInRow}</div>
+						<div>
+							questions {questions && questions.length - correctAnswersInRow}
+						</div>
 					</div>
 					<div className="question xyz-in" xyz="fade up delay-2">
 						{question}
