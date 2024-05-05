@@ -41,7 +41,7 @@ export default function ShowQuestion({
 			setAnswersArray(newAnswersArray);
 			setQuestion(question);
 		}
-	}, [questions, correctAnswersInRow]);
+	}, [questions, correctAnswersInRow, nrOfQuestions]);
 
 	function checkAnswer(e: React.MouseEvent<HTMLButtonElement>) {
 		const buttonText = e.currentTarget.textContent;
