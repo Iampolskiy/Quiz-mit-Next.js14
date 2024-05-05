@@ -42,7 +42,7 @@ export default function ShowQuestion({
 			setQuestion(question);
 		}
 		/* sdf */
-	}, [questions, nrOfQuestions, correctAnswersInRow]);
+	}, [questions, correctAnswersInRow]);
 
 	function checkAnswer(e: React.MouseEvent<HTMLButtonElement>) {
 		const buttonText = e.currentTarget.textContent;
