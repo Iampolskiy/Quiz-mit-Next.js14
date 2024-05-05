@@ -119,15 +119,15 @@ export default function ShowQuestion({
 					<div></div>
 					<div
 						className="question xyz-in fade up delay-2"
-						data-xyz="fade up delay-2"
+						xyz="fade up delay-2"
 					>
 						{question}
 					</div>
 					<div className="answer_wrapper">
 						{answersArray.map((answer, index) => (
 							<button
-								className=" answers xyz-in"
-								data-xyz={fadeArrayAnswers[index]} //fade up left delay-1
+								className="answers xyz-in"
+								xyz={fadeArrayAnswers[index]} //fade up left delay-1
 								/* disabled={correctAnswersInRow === nrOfQuestions} */
 								onClick={checkAnswer}
 								key={answer}
