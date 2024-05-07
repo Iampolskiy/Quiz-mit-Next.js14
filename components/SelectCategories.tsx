@@ -97,9 +97,13 @@ export default function SelectCategiries() {
 		console.log(e.target.value);
 		const category = fetchedCategories.find((c) => c.name === selectedCatName);
 
+		if (!category) {
+			return;
+		}
 		setSelectedCategorie(category);
 
 		setCategoryForSlider(fetchedCategories.indexOf(category));
+
 		setShowCategories(false);
 		console.log(categoryForSlider);
 		console.log(category);
@@ -126,19 +130,27 @@ export default function SelectCategiries() {
 
 	const selectedCat = fetchedCategories[categoryForSlider];
 	const changeCategoryUp = () => {
-		setCategoryForSlider(categoryForSlider + 1);
-		if (categoryForSlider === fetchedCategories.length) {
+		const nextIndex = categoryForSlider + 1;
+		if (nextIndex >= fetchedCategories.length) {
 			setCategoryForSlider(0);
+			setSelectedCategorie(fetchedCategories[0]);
+		} else {
+			setCategoryForSlider(nextIndex);
+			setSelectedCategorie(fetchedCategories[nextIndex]);
 		}
-		setSelectedCategorie(selectedCat);
 		console.log(categoryForSlider);
 	};
+
 	const changeCategoryDown = () => {
-		setCategoryForSlider(categoryForSlider - 1);
-		if (categoryForSlider === 0) {
-			setCategoryForSlider(0);
+		const nextIndex = categoryForSlider - 1;
+		if (nextIndex < 0) {
+			const lastIndex = fetchedCategories.length - 1;
+			setCategoryForSlider(lastIndex);
+			setSelectedCategorie(fetchedCategories[lastIndex]);
+		} else {
+			setCategoryForSlider(nextIndex);
+			setSelectedCategorie(fetchedCategories[nextIndex]);
 		}
-		setSelectedCategorie(selectedCat);
 		console.log(categoryForSlider);
 	};
 
@@ -147,13 +159,19 @@ export default function SelectCategiries() {
 			<div className={visible ? 'all' : 'none'}>
 				<div className="menuButton_number">
 					<button
+						className="minusButton"
 						disabled={nrOfQuestions <= 1}
 						onClick={() => setNrOfQuestions(nrOfQuestions - 1)}
 					>
 						-
 					</button>
 					<div className="buttonStyle">Questions {nrOfQuestions}</div>
-					<button onClick={() => setNrOfQuestions(nrOfQuestions + 1)}>+</button>
+					<button
+						className="plusButton"
+						onClick={() => setNrOfQuestions(nrOfQuestions + 1)}
+					>
+						+
+					</button>
 				</div>
 
 				<div className="menuButton_type">
@@ -173,8 +191,10 @@ export default function SelectCategiries() {
 
 				{/* ___________________________________________________________ */}
 
-				<div className="menuButton_showCat">
-					<button onClick={() => changeCategoryDown()}>-</button>
+				<div className="menuButton_showCat menuButton_number">
+					<button className="minusButton" onClick={() => changeCategoryDown()}>
+						-
+					</button>
 					<button onClick={() => setShowCategories(!showCategories)}>
 						{/* {showCategories ? selectedCategorie.name : 'Change Categorie'} */}
 						{/* {showCategoriesNames} */}
@@ -182,20 +202,13 @@ export default function SelectCategiries() {
 							? selectedCategorie.name
 							: 'Categorie Random'}
 					</button>
-					<button onClick={() => changeCategoryUp()}>+</button>
+					<button className="plusButton" onClick={() => changeCategoryUp()}>
+						+
+					</button>
 				</div>
 
 				{/* ___________________________________________________________ */}
 
-				<div className="menuButton_showCat">
-					<button onClick={() => setShowCategories(!showCategories)}>
-						{/* {showCategories ? selectedCategorie.name : 'Change Categorie'} */}
-						{/* {showCategoriesNames} */}
-						{selectedCategorie?.name
-							? selectedCategorie.name
-							: 'Categorie Random'}
-					</button>
-				</div>
 				<div className="menuButton_start">
 					<button
 						className="buttonStyle"

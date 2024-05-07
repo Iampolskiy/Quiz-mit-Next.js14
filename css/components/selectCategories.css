@@ -89,6 +89,23 @@
 	align-items: center;
 }
 
+.minusButton {
+	width: 12vw !important;
+}
+.plusButton {
+	width: 12vw !important;
+}
+.minusButton:hover {
+	color: red !important;
+	font-weight: 900;
+	background-color: var(--button-background-color) !important;
+}
+.plusButton:hover {
+	font-weight: 900;
+	color: greenyellow !important;
+	background-color: var(--button-background-color) !important;
+}
+
 .showCategories {
 	border-radius: 5px;
 	display: flex;
