@@ -1,5 +1,6 @@
 'use server';
 import prisma from '@/prisma/db';
+import { currentUser } from '@clerk/nextjs/server';
 
 export async function gameOver(score: number, yourWon: string) {
 	const newField = await prisma.incorectAnswers.create({

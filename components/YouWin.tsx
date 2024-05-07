@@ -3,6 +3,7 @@ import { toUpperCase } from '../lib/helpers/helpers';
 import '@animxyz/core';
 /* import { useEffect } from 'react'; */
 import { gameOver } from './serverActions/scoreServerAction';
+import Link from 'next/link';
 
 export default function YouWin({
 	correctAnswersInRow = 0,
@@ -76,13 +77,19 @@ export default function YouWin({
 					xyz="fade up"
 				>{`You answered ${correctAnswersInRow} questions correctly and you made ${incorrectAnswers} mistakes in total.`}</div>
 			</div>
-			<button onClick={() => handleInsertInDb(score, youWon)}>Add to DB</button>
 
 			{/* className="question xyz-in" xyz="fade up delay-2" */}
 			<div className="newGame xyz-in delay-4" xyz="fade up delay-2">
 				<button className="newGameBtn" onClick={reload}>
 					New Game
 				</button>
+				<button onClick={() => handleInsertInDb(score, youWon)}>
+					Add to DB
+				</button>
+
+				<Link href="/score" className="newGameBtn">
+					<div className="button">Rangliste</div>
+				</Link>
 			</div>
 			<div className="info-container2YW">
 				<div className="emojiHand"> 👍 {correctAnswersInRow}</div>
