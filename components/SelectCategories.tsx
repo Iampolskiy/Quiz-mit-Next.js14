@@ -10,6 +10,8 @@ import type {
 /* import type { TriviaCategoriesResponse } from '@/types/categorie-types'; */
 
 export default function SelectCategiries() {
+	const [categoryForSlider, setCategoryForSlider] = useState(0);
+
 	const [fetchedCategories, setFetchedCategories] = useState<Category[]>([]);
 	const [selectedCategorie, setSelectedCategorie] = useState<Category>();
 	const [showCategories, setShowCategories] = useState(false);
@@ -94,8 +96,13 @@ export default function SelectCategiries() {
 		const selectedCatName = e.target.value;
 		console.log(e.target.value);
 		const category = fetchedCategories.find((c) => c.name === selectedCatName);
+
 		setSelectedCategorie(category);
+
+		setCategoryForSlider(fetchedCategories.indexOf(category));
 		setShowCategories(false);
+		console.log(categoryForSlider);
+		console.log(category);
 	};
 	/* const colorArray = ['random', 'easy', 'medium', 'hard']; */
 
@@ -117,7 +124,23 @@ export default function SelectCategiries() {
 
 	() => setCategoryButtonText(selectedCategorie as any);
 
-	console.log(categoryButtonText);
+	const selectedCat = fetchedCategories[categoryForSlider];
+	const changeCategoryUp = () => {
+		setCategoryForSlider(categoryForSlider + 1);
+		if (categoryForSlider === fetchedCategories.length) {
+			setCategoryForSlider(0);
+		}
+		setSelectedCategorie(selectedCat);
+		console.log(categoryForSlider);
+	};
+	const changeCategoryDown = () => {
+		setCategoryForSlider(categoryForSlider - 1);
+		if (categoryForSlider === 0) {
+			setCategoryForSlider(0);
+		}
+		setSelectedCategorie(selectedCat);
+		console.log(categoryForSlider);
+	};
 
 	return (
 		<>
@@ -147,6 +170,23 @@ export default function SelectCategiries() {
 						{toUpperCase(difficulty)}
 					</button>
 				</div>
+
+				{/* ___________________________________________________________ */}
+
+				<div className="menuButton_showCat">
+					<button onClick={() => changeCategoryDown()}>-</button>
+					<button onClick={() => setShowCategories(!showCategories)}>
+						{/* {showCategories ? selectedCategorie.name : 'Change Categorie'} */}
+						{/* {showCategoriesNames} */}
+						{selectedCategorie?.name
+							? selectedCategorie.name
+							: 'Categorie Random'}
+					</button>
+					<button onClick={() => changeCategoryUp()}>+</button>
+				</div>
+
+				{/* ___________________________________________________________ */}
+
 				<div className="menuButton_showCat">
 					<button onClick={() => setShowCategories(!showCategories)}>
 						{/* {showCategories ? selectedCategorie.name : 'Change Categorie'} */}

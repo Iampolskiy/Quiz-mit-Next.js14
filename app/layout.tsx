@@ -4,6 +4,7 @@ import { Karla, Merriweather } from 'next/font/google';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const karlaStyles = Karla({
 	subsets: ['latin'],
@@ -23,16 +24,18 @@ const merriweatherStyles = Merriweather({
 
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang="de">
-			<body
-				className={`${karlaStyles.variable} ${merriweatherStyles.variable}`}
-			>
-				<div className="site-wrapper">
+		<ClerkProvider>
+			<html lang="de">
+				<body
+					className={`${karlaStyles.variable} ${merriweatherStyles.variable}`}
+				>
 					<Header />
-					<div className="site-content">{children}</div>
+					<div className="site-wrapper">
+						<div className="site-content">{children}</div>
+					</div>
 					<Footer />
-				</div>
-			</body>
-		</html>
+				</body>
+			</html>
+		</ClerkProvider>
 	);
 }

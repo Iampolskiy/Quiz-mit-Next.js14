@@ -66,10 +66,10 @@ export default function ShowQuestion({
 			/* setTimeout(() => {}, 2000); */
 		}
 
-		const rightAnswers = correctAnswersInRow + 1;
+		/* const rightAnswers = correctAnswersInRow + 1;
 		if (rightAnswers === nrOfQuestions) {
 			() => setButtonsDisabled(true);
-		}
+		} */
 	}
 
 	const fadeArrayAnswers = [
@@ -78,6 +78,8 @@ export default function ShowQuestion({
 		'fade up up delay-3',
 		'fade down right delay-4',
 	];
+
+	const score = correctAnswersInRow - incorrectAnswers;
 
 	return (
 		<>
@@ -88,6 +90,7 @@ export default function ShowQuestion({
 					selectedCategorie={selectedCategorie}
 					difficulty={difficulty}
 					quizType={quizType}
+					score={score}
 				/>
 			) : (
 				<div>

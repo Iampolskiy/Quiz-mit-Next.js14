@@ -1,6 +1,8 @@
 import type { ShowQuestionProps } from '@/types/categorie-types';
 import { toUpperCase } from '../lib/helpers/helpers';
 import '@animxyz/core';
+/* import { useEffect } from 'react'; */
+import { gameOver } from './serverActions/scoreServerAction';
 
 export default function YouWin({
 	correctAnswersInRow = 0,
@@ -13,8 +15,20 @@ export default function YouWin({
 		location.reload();
 	}
 
+	let youWon;
 	const score = correctAnswersInRow - incorrectAnswers;
+	if (score > 0) {
+		youWon = 'gewonnen';
+	} else if (score === 0) {
+		youWon = 'unentschienen';
+	} else {
+		youWon = 'verloren';
+	}
 
+	function handleInsertInDb(score: number, youWon: string) {
+		gameOver(score, youWon);
+		/* delete BTN */
+	}
 	return (
 		<>
 			<div className="info-container">
@@ -62,6 +76,7 @@ export default function YouWin({
 					xyz="fade up"
 				>{`You answered ${correctAnswersInRow} questions correctly and you made ${incorrectAnswers} mistakes in total.`}</div>
 			</div>
+			<button onClick={() => handleInsertInDb(score, youWon)}>Add to DB</button>
 
 			{/* className="question xyz-in" xyz="fade up delay-2" */}
 			<div className="newGame xyz-in delay-4" xyz="fade up delay-2">

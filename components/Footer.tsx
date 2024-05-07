@@ -1,3 +1,5 @@
-export default async function Footer() {
-	return <footer className="site-footer">Footer</footer>;
+'use client';
+
+export default function Footer() {
+	return <footer className="site-footer">footer</footer>;
 }

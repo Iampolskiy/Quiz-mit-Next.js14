@@ -31,6 +31,7 @@ export type ShowQuestionProps = {
 	incorrectAnswers?: number;
 	difficulty: string;
 	quizType: string;
+	score?: number;
 };
 
 /* 
