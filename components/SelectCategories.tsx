@@ -7,6 +7,7 @@ import type {
 	Category,
 	TriviaCategoriesResponse,
 } from '@/types/categorie-types';
+
 /* import type { TriviaCategoriesResponse } from '@/types/categorie-types'; */
 
 export default function SelectCategiries() {
@@ -76,10 +77,7 @@ export default function SelectCategiries() {
 				setVisible(true);
 			}
 			const questions = jsonData.results;
-			console.log(questions);
 			setQuestions(questions);
-
-			console.log(questions);
 		} catch (error) {
 			console.log(error);
 		}
@@ -119,7 +117,6 @@ export default function SelectCategiries() {
 		});
 		e.target.classList.add(colorArray[difficultyLevel]); */
 	};
-
 	const handleTypeButton = () => {
 		const quizTypeArray = ['multiple', 'boolean', 'random'];
 		setTypeLevel(typeLevel < 2 ? typeLevel + 1 : 0);
@@ -157,23 +154,6 @@ export default function SelectCategiries() {
 	return (
 		<>
 			<div className={visible ? 'all' : 'none'}>
-				<div className="menuButton_number">
-					<button
-						className="minusButton"
-						disabled={nrOfQuestions <= 1}
-						onClick={() => setNrOfQuestions(nrOfQuestions - 1)}
-					>
-						-
-					</button>
-					<div className="buttonStyle">Questions {nrOfQuestions}</div>
-					<button
-						className="plusButton"
-						onClick={() => setNrOfQuestions(nrOfQuestions + 1)}
-					>
-						+
-					</button>
-				</div>
-
 				<div className="menuButton_type">
 					<button onClick={() => handleTypeButton()}>
 						Type {toUpperCase(quizType)}
@@ -209,9 +189,29 @@ export default function SelectCategiries() {
 
 				{/* ___________________________________________________________ */}
 
+				<div className="menuButton_number">
+					<button
+						className="minusButton"
+						disabled={nrOfQuestions <= 1}
+						onClick={() => setNrOfQuestions(nrOfQuestions - 1)}
+					>
+						-
+					</button>
+					<div className="buttonStyle">
+						{' '}
+						{nrOfQuestions < 2 ? 'Question' : 'Questions'} {nrOfQuestions}
+					</div>
+					<button
+						className="plusButton"
+						onClick={() => setNrOfQuestions(nrOfQuestions + 1)}
+					>
+						+
+					</button>
+				</div>
+
 				<div className="menuButton_start">
 					<button
-						className="buttonStyle"
+						className="buttonStyle startQuiz"
 						disabled={disabledButton}
 						onClick={() => {
 							fetchQuizQuestions();
@@ -238,6 +238,7 @@ export default function SelectCategiries() {
 							);
 						})}
 						<button
+							className="categorieButton"
 							onClick={() => {
 								setSelectedCategorie(undefined),
 									setShowCategories(false); /* !!!!! */

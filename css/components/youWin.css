@@ -20,25 +20,56 @@
 .scoreNumber {
 	font-size: 2.4rem;
 	font-family: var(--heading-font);
+	font-family: monospace;
+	text-align: center;
 }
 
 .mistakesNumber {
-	font-size: 2rem;
+	margin-top: 72px;
+	font-size: xx-large;
 	font-family: var(--heading-font);
+	font-family: monospace;
+	text-align: center;
 }
 
 .wonLost {
 	display: flex;
 	justify-content: center;
-	margin-top: 20vh;
+	margin-top: 3vh;
 }
 
 .newGame {
 	display: flex;
 	justify-content: center;
 	margin: 3.5rem;
+	gap: 64px;
 }
 
 .newGameBtn {
 	font-size: xx-large;
+	width: 64px;
 }
+
+.usernameInput {
+	display: flex;
+	flex-direction: column;
+}
+
+.usernameInput > input {
+	font-size: xx-large;
+	color: #021222;
+	margin-top: 12px;
+	text-align: center;
+	background-color: #dbdec9;
+}
+.usernameInput > label {
+	font-size: xx-large;
+	margin-top: 58px;
+	text-align: center;
+	font-family: monospace;
+}
+/* label {
+		font-size: larger;
+		background-color: blue;
+		color: white;
+	} */

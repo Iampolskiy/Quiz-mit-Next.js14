@@ -21,8 +21,6 @@ export default function YouWin({
 		location.reload();
 	}
 
-	console.log(user?.username);
-
 	let youWon: string;
 	const score = correctAnswersInRow - incorrectAnswers;
 	if (score > 0) {
@@ -34,11 +32,19 @@ export default function YouWin({
 	}
 
 	function handleInsertInDb() {
-		gameOver(score, youWon, user?.username ?? username);
+		/* const email = user.emailAddresses[0].emailAddress; */
+
+		gameOver(score, youWon, username /* email */);
+		/* console.log(user.username);
+		console.log(user.emailAddresses[0]?.emailAddress); */
+
+		/* delete BTN */
+		console.log(username);
 	}
 	return (
 		<>
 			<div className="info-container">
+				{/* <div>{!username ? <input type="text" /> : username}</div> */}
 				<div>
 					{selectedCategorie?.name
 						? 'Category:' + selectedCategorie.name
@@ -83,36 +89,44 @@ export default function YouWin({
 					xyz="fade up"
 				>{`You answered ${correctAnswersInRow} questions correctly and you made ${incorrectAnswers} mistakes in total.`}</div>
 			</div>
-			{!user?.username ? (
-				<div className="usernameInput">
-					<label htmlFor="username">
-						Please enter your username to be included in the rankings
-					</label>
-					<input
-						type="text"
-						name="username"
-						id="username"
-						placeholder="Username"
-						onChange={(e) => {
-							setUsername(e.target.value);
-						}}
-					/>
-				</div>
-			) : (
-				<button className="newGameBtn" onClick={() => handleInsertInDb()}>
-					Add to DB 1
-				</button>
-			)}
+
+			{/* className="question xyz-in" xyz="fade up delay-2" */}
 			<div className="newGame xyz-in delay-4" xyz="fade up delay-2">
 				<button className="newGameBtn" onClick={reload}>
 					New Game
 				</button>
 
+				{/* {!user?.username ? (
+					<>
+						<h4>Enter your username</h4>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Bitte Benutzernamen eingeben"
+							onChange={(e) => {
+								setUsername(e.target.value);
+							}}
+						/>
+					</>
+				) : (
+					<div>
+						<button onClick={() => handleInsertInDb()}>Add to DB</button>
+					</div>
+				)} */}
+
 				{username && (
-					<button className="newGameBtn" onClick={() => handleInsertInDb()}>
-						Add to DB 2
+					<button onClick={() => handleInsertInDb()}>Add to DB</button>
+				)}
+				{user?.username && (
+					<button onClick={() => handleInsertInDb()}>
+						Add to DBuser.username
 					</button>
 				)}
+
+				<Link href="/score" className="newGameBtn">
+					<div className="button">Rangliste</div>
+				</Link>
 			</div>
 			<div className="info-container2YW">
 				<div className="emojiHand"> 👍 {correctAnswersInRow}</div>
