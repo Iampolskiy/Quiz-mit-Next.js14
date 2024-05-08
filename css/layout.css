@@ -3,8 +3,7 @@ body {
 	background-color: var(--body-background);
 }
 
-.site-header,
-.site-footer {
+.site-header {
 	background-color: #ffdb44;
 	padding-block: var(--content-padding);
 	display: flex;
@@ -13,4 +12,34 @@ body {
 	width: 100%;
 	text-align: center;
 	margin-bottom: 54px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
+}
+
+.quizMenu {
+	position: relative;
+	top: 160px;
+}
+
+.site-footer {
+	background-color: #ffdb44;
+	padding-block: var(--content-padding);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	text-align: center;
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+
+	box-shadow: 0 -2px 25px rgba(0, 0, 0, 0.1);
 }

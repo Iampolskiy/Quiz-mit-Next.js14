@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function quiz() {
 	return (
 		<>
-			<div className="marginTop">
+			<div className="quizMenu">
 				<SelectCategiries />
 			</div>
 		</>

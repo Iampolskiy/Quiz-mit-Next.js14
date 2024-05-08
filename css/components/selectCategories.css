@@ -87,6 +87,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 }
 
 .minusButton {
@@ -132,6 +133,10 @@
 	background: white;
 	z-index: 0;
 	max-width: 240px;
+}
+
+.question {
+	text-align: center;
 }
 
 .startQuiz {
