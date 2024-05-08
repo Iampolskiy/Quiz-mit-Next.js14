@@ -15,11 +15,9 @@ export default function YouWin({
 	difficulty,
 	quizType,
 }: ShowQuestionProps) {
+	const [disable, setDisable] = useState(false);
 	const { isSignedIn, user, isLoaded } = useUser();
 	const [username, setUsername] = useState('');
-	function reload() {
-		location.reload();
-	}
 
 	console.log(user?.username);
 
@@ -35,6 +33,7 @@ export default function YouWin({
 
 	function handleInsertInDb() {
 		gameOver(score, youWon, user?.username ?? username);
+		setDisable(true);
 	}
 	return (
 		<>
@@ -83,12 +82,16 @@ export default function YouWin({
 					xyz="fade up"
 				>{`You answered ${correctAnswersInRow} questions correctly and you made ${incorrectAnswers} mistakes in total.`}</div>
 			</div>
+
+			{/* <div className="newGame xyz-in delay-4" xyz="fade up delay-2">
+				</div> */}
 			{!user?.username ? (
 				<div className="usernameInput">
 					<label htmlFor="username">
 						Please enter your username to be included in the rankings
 					</label>
 					<input
+						className="usernameInputField"
 						type="text"
 						name="username"
 						id="username"
@@ -99,21 +102,25 @@ export default function YouWin({
 					/>
 				</div>
 			) : (
-				<button className="newGameBtn" onClick={() => handleInsertInDb()}>
-					Add to DB 1
+				<button
+					disabled={disable}
+					className="newGameBtn centered"
+					onClick={() => handleInsertInDb()}
+				>
+					Add to Scorelist
 				</button>
 			)}
-			<div className="newGame xyz-in delay-4" xyz="fade up delay-2">
-				<button className="newGameBtn" onClick={reload}>
-					New Game
-				</button>
 
-				{username && (
-					<button className="newGameBtn" onClick={() => handleInsertInDb()}>
-						Add to DB 2
-					</button>
-				)}
-			</div>
+			{username && (
+				<button
+					className="newGameBtn centered"
+					disabled={disable}
+					onClick={() => handleInsertInDb()}
+				>
+					Add to Scorelist
+				</button>
+			)}
+
 			<div className="info-container2YW">
 				<div className="emojiHand"> 👍 {correctAnswersInRow}</div>
 				<div className="emojiHand"> 👎 {incorrectAnswers}</div>

@@ -9,13 +9,24 @@ export default function Header() {
 	const { isSignedIn, user, isLoaded } = useUser();
 	const [username, setUsername] = useState('');
 
+	function reload() {
+		location.href = '/';
+	}
+
 	return (
 		<>
 			<header className="site-header">
 				<div className="login-logout-button ">
-					{user?.username
-						? 'User: ' + ' ' + toUpperCase(user.username)
-						: username}
+					<button className="newGameBtn" onClick={reload}>
+						New Game
+					</button>
+					{user?.username ? (
+						<div className="usernameSign">
+							User:{' ' + toUpperCase(user.username)}
+						</div>
+					) : (
+						username
+					)}
 
 					<Link className="button" href="/score">
 						Rangliste

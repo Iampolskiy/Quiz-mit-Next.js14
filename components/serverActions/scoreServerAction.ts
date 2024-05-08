@@ -20,7 +20,7 @@ export async function gameOver(
 
 export async function findUsers() {
 	const users = await prisma.incorectAnswers.findMany({
-		orderBy: { date: 'desc' },
+		orderBy: { score: 'desc' },
 	});
 	return users;
 }

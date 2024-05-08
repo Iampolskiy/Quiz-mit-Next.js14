@@ -39,3 +39,14 @@
 		}
 	}
 }
+
+.usernameSign {
+	color: var(--button-background-color);
+	border: 1px solid;
+	border-color: var(--button-border-color);
+	border-radius: var(--border-radius-s);
+	background-color: var(--button-color);
+	padding: 0.6em 1em 0.4em;
+	font-weight: bold;
+	box-shadow: var(--shadow-4);
+}

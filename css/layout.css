@@ -12,8 +12,6 @@ body {
 	width: 100%;
 	text-align: center;
 	margin-bottom: 54px;
-
-	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -23,7 +21,7 @@ body {
 
 .quizMenu {
 	position: relative;
-	top: 160px;
+	margin-bottom: 10%;
 }
 
 .site-footer {
@@ -42,4 +40,10 @@ body {
 	z-index: 1000;
 
 	box-shadow: 0 -2px 25px rgba(0, 0, 0, 0.1);
+}
+
+.centered {
+	display: flex;
+	justify-content: center;
+	text-align: center;
 }

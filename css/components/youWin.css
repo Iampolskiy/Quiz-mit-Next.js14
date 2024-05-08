@@ -17,6 +17,10 @@
 	display: none;
 }
 
+.result {
+	margin-bottom: 5%;
+}
+
 .scoreNumber {
 	font-size: 2.4rem;
 	font-family: var(--heading-font);
@@ -25,7 +29,6 @@
 }
 
 .mistakesNumber {
-	margin-top: 72px;
 	font-size: xx-large;
 	font-family: var(--heading-font);
 	font-family: monospace;
@@ -39,18 +42,16 @@
 }
 
 .newGame {
-	display: flex;
+	display: block;
 	justify-content: center;
-	margin: 3.5rem;
-	gap: 64px;
+	gap: 1%;
 }
 
 .newGameBtn {
-	font-size: xx-large;
-	width: 64px;
 }
 
 .usernameInput {
+	margin-top: 5%;
 	display: flex;
 	flex-direction: column;
 }
@@ -64,10 +65,27 @@
 }
 .usernameInput > label {
 	font-size: xx-large;
-	margin-top: 58px;
+
 	text-align: center;
 	font-family: monospace;
 }
+
+.restart_add_buttons_wrapper {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	gap: 1%;
+}
+
+.usernameInputField {
+	margin-bottom: 16px;
+}
+
+.centered {
+	margin: 0 auto;
+	display: block;
+}
+
 /* label {
 		font-size: larger;
 		background-color: blue;

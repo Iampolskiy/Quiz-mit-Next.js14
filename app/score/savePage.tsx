@@ -11,13 +11,13 @@ export default async function ScorePage() {
 
 	return (
 		<>
-			<h2>Score Page</h2>
+			<h1>Score Page</h1>
 			<table>
 				<thead>
 					<tr>
-						<th>Score</th>
 						<th>Username</th>
 						<th>Wins</th>
+						<th>Score</th>
 						<th>Date</th>
 					</tr>
 				</thead>
@@ -26,9 +26,9 @@ export default async function ScorePage() {
 						/* .sort((a, b) => b.score - a.score) //  */
 						.map((user) => (
 							<tr key={user.id}>
-								<td>{user.score}</td>
 								<td>{user.username}</td>
 								<td>{user.win}</td>
+								<td>{user.score}</td>
 								<td>{user.date.toLocaleString()}</td>
 							</tr>
 						))}

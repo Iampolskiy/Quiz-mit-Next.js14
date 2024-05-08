@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,12 +8,9 @@ datasource db {
 }
 
 model incorectAnswers {
-  // ID, wenn man eine automatisch hochgezählte Integer-Zahl möchte.
-  // Achtung, Gefahr, dass jemand einfach IDs ausprobiert.
-  //  id Int @id @default(autoincrement())
-  id       String   @id @default(uuid()) // Kryptische Strings ohne Reihenfolge als ID
+  id       String   @id @default(uuid())
   username String?
   score    Int?
-  win      String? // Optionale Spalte
-  date     DateTime @default(now()) // Zeitpunk der Erstellung des Eintrags
+  win      String?
+  date     DateTime @default(now())
 }
