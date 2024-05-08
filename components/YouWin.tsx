@@ -1,11 +1,9 @@
+import '@animxyz/core';
 import type { ShowQuestionProps } from '@/types/categorie-types';
 import { toUpperCase } from '../lib/helpers/helpers';
-import '@animxyz/core';
 /* import { useEffect } from 'react'; */
 import { gameOver } from './serverActions/scoreServerAction';
-import Link from 'next/link';
 import { useUser } from '@clerk/nextjs';
-import TypeUsername from './TypeUsername';
 import { useState } from 'react';
 
 export default function YouWin({
@@ -82,9 +80,6 @@ export default function YouWin({
 					xyz="fade up"
 				>{`You answered ${correctAnswersInRow} questions correctly and you made ${incorrectAnswers} mistakes in total.`}</div>
 			</div>
-
-			{/* <div className="newGame xyz-in delay-4" xyz="fade up delay-2">
-				</div> */}
 			{!user?.username ? (
 				<div className="usernameInput">
 					<label htmlFor="username">
@@ -104,7 +99,7 @@ export default function YouWin({
 			) : (
 				<button
 					disabled={disable}
-					className="newGameBtn centered"
+					className="centered"
 					onClick={() => handleInsertInDb()}
 				>
 					Add to Scorelist
@@ -113,7 +108,7 @@ export default function YouWin({
 
 			{username && (
 				<button
-					className="newGameBtn centered"
+					className="centered"
 					disabled={disable}
 					onClick={() => handleInsertInDb()}
 				>

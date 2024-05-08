@@ -22,16 +22,14 @@ export default async function ScorePage() {
 					</tr>
 				</thead>
 				<tbody>
-					{users
-						/* .sort((a, b) => b.score - a.score) //  */
-						.map((user) => (
-							<tr key={user.id}>
-								<td>{user.score}</td>
-								<td>{user.username}</td>
-								<td>{user.win}</td>
-								<td>{user.date.toLocaleString()}</td>
-							</tr>
-						))}
+					{users.map((user) => (
+						<tr key={user.id}>
+							<td>{user.score}</td>
+							<td>{user.username}</td>
+							<td>{user.win}</td>
+							<td>{user.date.toLocaleString()}</td>
+						</tr>
+					))}
 				</tbody>
 			</table>
 		</>

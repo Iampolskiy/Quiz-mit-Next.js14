@@ -8,7 +8,6 @@ import type { ShowQuestionProps } from '@/types/categorie-types';
 export default function ShowQuestion({
 	questions,
 	nrOfQuestions,
-	/* endQuiz, */
 	quizType,
 	difficulty,
 	selectedCategorie,
@@ -47,8 +46,6 @@ export default function ShowQuestion({
 	function checkAnswer(e: React.MouseEvent<HTMLButtonElement>) {
 		const buttonText = e.currentTarget.textContent;
 		if (correctAnswer === buttonText) {
-			/* e.currentTarget.disabled = true; */
-			/* e.currentTarget.style.backgroundColor = 'green'; */
 			e.currentTarget.classList.add('correctAnswer');
 			setAnswerStatus('correctAnswer');
 			setDisableWrongAnswers(true);
@@ -63,13 +60,7 @@ export default function ShowQuestion({
 			e.currentTarget.style.backgroundColor = 'red';
 			setAnswerStatus('incorrectAnswer');
 			setIncorrectAnswers(incorrectAnswers + 1);
-			/* setTimeout(() => {}, 2000); */
 		}
-
-		/* const rightAnswers = correctAnswersInRow + 1;
-		if (rightAnswers === nrOfQuestions) {
-			() => setButtonsDisabled(true);
-		} */
 	}
 
 	const fadeArrayAnswers = [
@@ -126,8 +117,7 @@ export default function ShowQuestion({
 						{answersArray.map((answer, index) => (
 							<button
 								className=" answers xyz-in"
-								xyz={fadeArrayAnswers[index]} //fade up left delay-1
-								/* disabled={correctAnswersInRow === nrOfQuestions} */
+								xyz={fadeArrayAnswers[index]}
 								onClick={checkAnswer}
 								key={answer}
 								disabled={disableWrongAnswers}

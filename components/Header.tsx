@@ -3,8 +3,8 @@ import { toUpperCase } from '@/lib/helpers/helpers';
 import { SignedIn, SignedOut } from '@clerk/clerk-react';
 import { SignInButton, SignOutButton } from '@clerk/nextjs';
 import { useUser } from '@clerk/nextjs';
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
 export default function Header() {
 	const { isSignedIn, user, isLoaded } = useUser();
 	const [username, setUsername] = useState('');
@@ -17,9 +17,7 @@ export default function Header() {
 		<>
 			<header className="site-header">
 				<div className="login-logout-button ">
-					<button className="newGameBtn" onClick={reload}>
-						New Game
-					</button>
+					<button onClick={reload}>New Game</button>
 					{user?.username ? (
 						<div className="usernameSign">
 							User:{' ' + toUpperCase(user.username)}

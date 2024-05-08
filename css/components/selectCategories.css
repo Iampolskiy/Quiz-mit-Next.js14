@@ -107,10 +107,6 @@
 	background-color: var(--button-background-color) !important;
 }
 
-/* .margin-top-m {
-	margin-top: 16px;
-} */
-
 .showCategories {
 	border-radius: 5px;
 	display: flex;

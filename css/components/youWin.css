@@ -47,9 +47,6 @@
 	gap: 1%;
 }
 
-.newGameBtn {
-}
-
 .usernameInput {
 	margin-top: 5%;
 	display: flex;
@@ -85,9 +82,3 @@
 	margin: 0 auto;
 	display: block;
 }
-
-/* label {
-		font-size: larger;
-		background-color: blue;
-		color: white;
-	} */

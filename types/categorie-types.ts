@@ -21,7 +21,7 @@ export type TriviaCategoriesResponse = {
 	results: Category[];
 };
 
-export type selectedCategorie = [String];
+export type selectedCategorie = String;
 
 export type ShowQuestionProps = {
 	questions?: Question[];

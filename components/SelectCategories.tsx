@@ -8,8 +8,6 @@ import type {
 	TriviaCategoriesResponse,
 } from '@/types/categorie-types';
 
-/* import type { TriviaCategoriesResponse } from '@/types/categorie-types'; */
-
 export default function SelectCategiries() {
 	const [categoryForSlider, setCategoryForSlider] = useState(0);
 
@@ -64,7 +62,6 @@ export default function SelectCategiries() {
 			const response = await fetch(urlString);
 			if (response) {
 				console.log('questions fetch OK');
-				/* console.log('questions fetch OK'); */
 			}
 			const jsonData = (await response.json()) as TriviaCategoriesResponse;
 			console.log(jsonData);
@@ -106,16 +103,11 @@ export default function SelectCategiries() {
 		console.log(categoryForSlider);
 		console.log(category);
 	};
-	/* const colorArray = ['random', 'easy', 'medium', 'hard']; */
 
 	const handleDifficultyButton = (e: React.MouseEvent<HTMLButtonElement>) => {
 		const difficultyLevelArray = ['random', 'easy', 'medium', 'hard'];
 		setDifficultyLevel(difficultyLevel < 3 ? difficultyLevel + 1 : 0);
 		setDifficulty(difficultyLevelArray[difficultyLevel + 1]);
-		/* colorArray.forEach((color) => {
-			e.target.classList.remove(color);
-		});
-		e.target.classList.add(colorArray[difficultyLevel]); */
 	};
 	const handleTypeButton = () => {
 		const quizTypeArray = ['multiple', 'boolean', 'random'];
@@ -169,15 +161,11 @@ export default function SelectCategiries() {
 					</button>
 				</div>
 
-				{/* ___________________________________________________________ */}
-
 				<div className="menuButton_showCat menuButton_number">
 					<button className="minusButton" onClick={() => changeCategoryDown()}>
 						-
 					</button>
 					<button onClick={() => setShowCategories(!showCategories)}>
-						{/* {showCategories ? selectedCategorie.name : 'Change Categorie'} */}
-						{/* {showCategoriesNames} */}
 						{selectedCategorie?.name
 							? selectedCategorie.name
 							: 'Categorie Random'}
@@ -186,8 +174,6 @@ export default function SelectCategiries() {
 						+
 					</button>
 				</div>
-
-				{/* ___________________________________________________________ */}
 
 				<div className="menuButton_number">
 					<button
@@ -268,7 +254,6 @@ export default function SelectCategiries() {
 			</div>
 			<ShowQuestion
 				questions={questions}
-				/* selectedCategorieID={selectedCategorie.id} */
 				nrOfQuestions={nrOfQuestions}
 				selectedCategorie={selectedCategorie}
 				difficulty={difficulty}
