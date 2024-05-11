@@ -25,6 +25,9 @@ export default function ShowQuestion({
 		if (!questions || !nrOfQuestions) {
 			return;
 		}
+		if (questions?.length === 0) {
+			console.log('questions array.length is 0');
+		}
 		if (questions.length > 0 && correctAnswersInRow < nrOfQuestions) {
 			const incorrectAnswers = questions[correctAnswersInRow].incorrect_answers;
 			const question = decodeHtmlEntities(
@@ -46,6 +49,8 @@ export default function ShowQuestion({
 	function checkAnswer(e: React.MouseEvent<HTMLButtonElement>) {
 		const buttonText = e.currentTarget.textContent;
 		if (correctAnswer === buttonText) {
+			/* e.currentTarget.disabled = true; */
+			/* e.currentTarget.style.backgroundColor = 'green'; */
 			e.currentTarget.classList.add('correctAnswer');
 			setAnswerStatus('correctAnswer');
 			setDisableWrongAnswers(true);

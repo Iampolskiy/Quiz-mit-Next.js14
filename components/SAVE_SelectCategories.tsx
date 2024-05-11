@@ -7,7 +7,6 @@ import type {
 	Category,
 	TriviaCategoriesResponse,
 } from '@/types/categorie-types';
-import NumberOfQuestSlideBtn from './NumberOfQuestSlideBtn';
 
 export default function SelectCategiries() {
 	const [categoryForSlider, setCategoryForSlider] = useState(0);
@@ -20,7 +19,7 @@ export default function SelectCategiries() {
 	const [difficulty, setDifficulty] = useState('easy');
 	const [difficultyLevel, setDifficultyLevel] = useState(1);
 	const [quizType, setQuizType] = useState('multiple');
-	const [typeLevel, setTypeLevel] = useState(0);
+	const [typeLevel, setTypeLevel] = useState(1);
 	const [nrOfQuestions, setNrOfQuestions] = useState(3);
 	const [categoryButtonText, setCategoryButtonText] = useState('Random');
 	const [visible, setVisible] = useState(true);
@@ -144,14 +143,6 @@ export default function SelectCategiries() {
 		console.log(categoryForSlider);
 	};
 
-	type questionNumbersArray = number[];
-	const setNumberOfQuestions = (newValue: number) => {
-		setNrOfQuestions(newValue);
-	};
-
-	const questionNumbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-	console.log(nrOfQuestions);
-
 	return (
 		<>
 			<div className={visible ? 'all' : 'none'}>
@@ -184,25 +175,6 @@ export default function SelectCategiries() {
 					</button>
 				</div>
 
-				{/* <div className="menuButton_number">
-					<button
-						className="minusButton"
-						disabled={nrOfQuestions <= 1}
-						onClick={() => setNrOfQuestions(nrOfQuestions - 1)}
-					>
-						-
-					</button>
-					<div className="buttonStyle">
-						{' '}
-						{nrOfQuestions < 2 ? 'Question' : 'Questions'} {nrOfQuestions}
-					</div>
-					<button
-						className="plusButton"
-						onClick={() => setNrOfQuestions(nrOfQuestions + 1)}
-					>
-						+
-					</button>
-				</div> */}
 				<div className="menuButton_number">
 					<button
 						className="minusButton"
@@ -222,14 +194,7 @@ export default function SelectCategiries() {
 						+
 					</button>
 				</div>
-				{/* ________________________________________________________________________________________ */}
 
-				<NumberOfQuestSlideBtn
-					setNumberOfQuestions={setNumberOfQuestions}
-					questionNumbersArray={questionNumbersArray}
-					nrOfQuestions={nrOfQuestions}
-				/>
-				{/* ________________________________________________________________________________________ */}
 				<div className="menuButton_start">
 					<button
 						className="buttonStyle startQuiz"
