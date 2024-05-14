@@ -7,7 +7,8 @@ export default function NumberOfQuestSlideBtn({
 	questionNumbersArray,
 	setNumberOfQuestions,
 	nrOfQuestions,
-}: Props) {
+}: /* jhgjhg */
+Props) {
 	/* const [nrInArray, setNrInArray] = useState(0); */
 	if (!questionNumbersArray) return;
 	const handleButtonClickMinus = () => {
@@ -24,7 +25,29 @@ export default function NumberOfQuestSlideBtn({
 		}
 	};
 
-	console.log({ nrOfQuestions });
+	const handleButtonClickBtn = () => {
+		return <h2>{nrOfQuestions}</h2>;
+	};
+
+	/* const handleCategoriesChange = (
+		e: React.ChangeEvent<HTMLSelectElement> | any
+	) => {
+		const selectedCatName = e.target.value;
+		console.log(e.target.value);
+		const category = fetchedCategories.find((c) => c.name === selectedCatName);
+
+		if (!category) {
+			return;
+		}
+		setSelectedCategorie(category);
+
+		setCategoryForSlider(fetchedCategories.indexOf(category));
+
+		setShowCategories(false);
+		
+	};
+
+ */
 
 	return (
 		<div className="menuButton_number">
@@ -35,10 +58,10 @@ export default function NumberOfQuestSlideBtn({
 			>
 				-
 			</button>
-			<div className="buttonStyle">
+			<button onClick={() => handleButtonClickBtn()} className="buttonStyle">
 				{' '}
 				{nrOfQuestions < 2 ? 'Question_comp' : 'Questions_comp'} {nrOfQuestions}
-			</div>
+			</button>
 			<button className="plusButton" onClick={() => handleButtonClickPlus()}>
 				+
 			</button>
