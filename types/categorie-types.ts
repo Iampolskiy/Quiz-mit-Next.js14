@@ -34,6 +34,10 @@ export type ShowQuestionProps = {
 	score?: number;
 };
 
+export type questionNumbersArray = number[];
+
+export type showNumbers = boolean;
+
 /* 
 "trivia_categories": [
     {
