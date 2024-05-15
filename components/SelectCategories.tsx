@@ -15,13 +15,16 @@ export default function SelectCategiries() {
 	const [fetchedCategories, setFetchedCategories] = useState<Category[]>([]);
 	const [selectedCategorie, setSelectedCategorie] = useState<Category>();
 	const [showCategories, setShowCategories] = useState(false);
+
 	const [questions, setQuestions] = useState<Category[]>([]);
+	const [showQuestionNumber, setShowQuestionNumber] = useState(false);
+	const [nrOfQuestions, setNrOfQuestions] = useState<number>(3);
+
 	const [disabledButton, setDisabledButton] = useState(false);
 	const [difficulty, setDifficulty] = useState('easy');
 	const [difficultyLevel, setDifficultyLevel] = useState(1);
 	const [quizType, setQuizType] = useState('multiple');
 	const [typeLevel, setTypeLevel] = useState(0);
-	const [nrOfQuestions, setNrOfQuestions] = useState(3);
 	const [categoryButtonText, setCategoryButtonText] = useState('Random');
 	const [visible, setVisible] = useState(true);
 
@@ -86,6 +89,15 @@ export default function SelectCategiries() {
 		}, 5000);
 	}
 
+	const handleQuestionNumberChange = (
+		e: React.ChangeEvent<HTMLSelectElement> | any
+	) => {
+		const selectedQuestionNumber = parseInt(e.target.value);
+		setNrOfQuestions(selectedQuestionNumber);
+		console.log(selectedQuestionNumber);
+		setShowQuestionNumber(!showQuestionNumber);
+	};
+
 	const handleCategoriesChange = (
 		e: React.ChangeEvent<HTMLSelectElement> | any
 	) => {
@@ -149,8 +161,12 @@ export default function SelectCategiries() {
 		setNrOfQuestions(newValue);
 	};
 
-	const questionNumbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+	const questionNumbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	console.log(nrOfQuestions);
+
+	if (!nrOfQuestions) {
+		setNrOfQuestions(0);
+	}
 
 	return (
 		<>
@@ -169,7 +185,6 @@ export default function SelectCategiries() {
 						{toUpperCase(difficulty)}
 					</button>
 				</div>
-
 				<div className="menuButton_showCat menuButton_number">
 					<button className="minusButton" onClick={() => changeCategoryDown()}>
 						-
@@ -177,13 +192,12 @@ export default function SelectCategiries() {
 					<button onClick={() => setShowCategories(!showCategories)}>
 						{selectedCategorie?.name
 							? selectedCategorie.name
-							: 'Categorie Random'}
+							: 'Categorie: Random'}
 					</button>
 					<button className="plusButton" onClick={() => changeCategoryUp()}>
 						+
 					</button>
 				</div>
-
 				{/* <div className="menuButton_number">
 					<button
 						className="minusButton"
@@ -203,31 +217,13 @@ export default function SelectCategiries() {
 						+
 					</button>
 				</div> */}
-				<div className="menuButton_number">
-					<button
-						className="minusButton"
-						disabled={nrOfQuestions <= 1}
-						onClick={() => setNrOfQuestions(nrOfQuestions - 1)}
-					>
-						-
-					</button>
-					<div className="buttonStyle">
-						{' '}
-						{nrOfQuestions < 2 ? 'Question' : 'Questions'} {nrOfQuestions}
-					</div>
-					<button
-						className="plusButton"
-						onClick={() => setNrOfQuestions(nrOfQuestions + 1)}
-					>
-						+
-					</button>
-				</div>
 				{/* ________________________________________________________________________________________ */}
-
 				<NumberOfQuestSlideBtn
 					setNumberOfQuestions={setNumberOfQuestions}
 					questionNumbersArray={questionNumbersArray}
 					nrOfQuestions={nrOfQuestions}
+					setShowQuestionNumber={setShowQuestionNumber}
+					showQuestionNumber={showQuestionNumber}
 				/>
 				{/* ________________________________________________________________________________________ */}
 				<div className="menuButton_start">
@@ -267,6 +263,32 @@ export default function SelectCategiries() {
 						>
 							Random
 						</button>
+					</div>
+				)}
+				{showQuestionNumber && (
+					<div className="showCategories">
+						{questionNumbersArray.map((nr) => {
+							return (
+								<button
+									className="categorieButton"
+									key={nr}
+									onClick={(e) => {
+										handleQuestionNumberChange(e);
+									}}
+									value={nr}
+								>
+									{nr}
+								</button>
+							);
+						})}
+						{/* <button
+							className="categorieButton"
+							onClick={() => {
+								setNrOfQuestions(undefined), setShowQuestionNumber(false);
+							}}
+						>
+							Random
+						</button> */}
 					</div>
 				)}
 				<div className="info-container">

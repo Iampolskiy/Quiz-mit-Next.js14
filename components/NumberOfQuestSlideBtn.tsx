@@ -1,12 +1,16 @@
 type Props = {
 	questionNumbersArray: number[];
 	setNumberOfQuestions: Function;
-	nrOfQuestions: number;
+	nrOfQuestions: any;
+	setShowQuestionNumber: Function;
+	showQuestionNumber: boolean;
 };
 export default function NumberOfQuestSlideBtn({
 	questionNumbersArray,
 	setNumberOfQuestions,
 	nrOfQuestions,
+	setShowQuestionNumber,
+	showQuestionNumber,
 }: /* jhgjhg */
 Props) {
 	/* const [nrInArray, setNrInArray] = useState(0); */
@@ -58,9 +62,12 @@ Props) {
 			>
 				-
 			</button>
-			<button onClick={() => handleButtonClickBtn()} className="buttonStyle">
+			<button
+				onClick={() => setShowQuestionNumber(!showQuestionNumber)}
+				className="buttonStyle"
+			>
 				{' '}
-				{nrOfQuestions < 2 ? 'Question_comp' : 'Questions_comp'} {nrOfQuestions}
+				{nrOfQuestions < 2 ? 'Question' : 'Questions'} {nrOfQuestions}
 			</button>
 			<button className="plusButton" onClick={() => handleButtonClickPlus()}>
 				+
