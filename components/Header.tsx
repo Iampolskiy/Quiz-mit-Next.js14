@@ -27,7 +27,7 @@ export default function Header() {
 					)}
 
 					<Link className="button" href="/score">
-						Rangliste
+						Ranking
 					</Link>
 
 					<SignedOut>

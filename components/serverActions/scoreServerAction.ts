@@ -15,6 +15,7 @@ export async function gameOver(
 			date: new Date(),
 		},
 	});
+
 	return newField;
 }
 

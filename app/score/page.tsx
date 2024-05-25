@@ -11,23 +11,22 @@ export default async function ScorePage() {
 
 	return (
 		<>
-			<h2>Score Page</h2>
 			<table>
 				<thead>
-					<tr>
-						<th>Score</th>
-						<th>Username</th>
-						<th>Wins</th>
-						<th>Date</th>
+					<tr className="score_fieldnames">
+						<th className="score_fieldname">Username</th>
+						<th className="score_fieldname">Score</th>
+						{/* <th className="score_fieldname">Wins</th> */}
+						<th className="score_fieldname">Date</th>
 					</tr>
 				</thead>
 				<tbody>
 					{users.map((user) => (
 						<tr key={user.id}>
-							<td>{user.score}</td>
-							<td>{user.username}</td>
-							<td>{user.win}</td>
-							<td>{user.date.toLocaleString()}</td>
+							<td className="score_value">{user.username}</td>
+							<td className="score_value">{user.score}</td>
+							{/* <td className="score_value">{user.win}</td> */}
+							<td className="score_value">{user.date.toLocaleString()}</td>
 						</tr>
 					))}
 				</tbody>

@@ -2,3 +2,14 @@ table {
 	height: 100%;
 	margin-bottom: 56px;
 }
+
+.score_value {
+	text-align: center;
+}
+
+.score_fieldname {
+	padding-bottom: 4px;
+	text-transform: uppercase;
+	color: var(--button-background-color);
+	border-bottom: 1px solid black;
+}

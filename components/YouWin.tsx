@@ -13,12 +13,10 @@ export default function YouWin({
 	difficulty,
 	quizType,
 }: ShowQuestionProps) {
-	const [disable, setDisable] = useState(false);
+	const [visible, setVisible] = useState(true);
 	const { isSignedIn, user, isLoaded } = useUser();
 	const [username, setUsername] = useState('');
-
-	console.log(user?.username);
-
+	const [feedback, setFeedback] = useState('');
 	let youWon: string;
 	const score = correctAnswersInRow - incorrectAnswers;
 	if (score > 0) {
@@ -31,7 +29,12 @@ export default function YouWin({
 
 	function handleInsertInDb() {
 		gameOver(score, youWon, user?.username ?? username);
-		setDisable(true);
+		/* setDisable(true); */
+		setVisible(false);
+		setFeedback('Score saved');
+		setTimeout(() => {
+			setFeedback('');
+		}, 3000);
 	}
 	return (
 		<>
@@ -80,7 +83,8 @@ export default function YouWin({
 					xyz="fade up"
 				>{`You answered ${correctAnswersInRow} questions correctly and you made ${incorrectAnswers} mistakes in total.`}</div>
 			</div>
-			{!user?.username ? (
+
+			{visible && !user?.username ? (
 				<div className="usernameInput">
 					<label htmlFor="username">
 						Please enter your username to be included in the rankings
@@ -97,25 +101,18 @@ export default function YouWin({
 					/>
 				</div>
 			) : (
-				<button
-					disabled={disable}
-					className="centered"
-					onClick={() => handleInsertInDb()}
-				>
+				visible && (
+					<button className="centered" onClick={() => handleInsertInDb()}>
+						Add to Scorelist
+					</button>
+				)
+			)}
+			<h2 className="centered">{feedback}</h2>
+			{username && visible && (
+				<button className="centered" onClick={() => handleInsertInDb()}>
 					Add to Scorelist
 				</button>
 			)}
-
-			{username && (
-				<button
-					className="centered"
-					disabled={disable}
-					onClick={() => handleInsertInDb()}
-				>
-					Add to Scorelist
-				</button>
-			)}
-
 			<div className="info-container2YW">
 				<div className="emojiHand"> 👍 {correctAnswersInRow}</div>
 				<div className="emojiHand"> 👎 {incorrectAnswers}</div>
